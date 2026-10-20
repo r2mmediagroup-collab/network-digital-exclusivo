@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Network Digital Exclusivo — Ferramentas digitais e IA em um só lugar</title>
+<meta name="description" content="Conheça o Network Digital Exclusivo e descubra ferramentas de inteligência artificial, recursos digitais e novidades para quem vive conectado.">
+<!-- Open Graph / compartilhamento (valores finais aplicados via config.js) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Network Digital Exclusivo — Ferramentas digitais e IA em um só lugar">
+<meta property="og:description" content="Conheça o Network Digital Exclusivo e descubra ferramentas de inteligência artificial, recursos digitais e novidades para quem vive conectado.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://connect.facebook.net">
+<style>
+  :root{
+    --bg:#050914; --bg2:#0a1226; --neon:#00d4ff; --neon2:#7c5cff;
+    --text:#f2f6ff; --muted:#9aa7c7; --wa:#25d366; --wa-dark:#1da851;
+    --card:rgba(255,255,255,.045); --line:rgba(0,212,255,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+    background:radial-gradient(1200px 600px at 50% -80px, #0e1c44 0%, var(--bg) 55%) , var(--bg);
+    color:var(--text); line-height:1.55; min-height:100vh;
+  }
+  .wrap{max-width:520px;margin:0 auto;padding:0 20px 56px}
+  header.badge{display:flex;justify-content:center;padding:22px 0 6px}
+  .pill{
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--neon);
+    border:1px solid var(--line);border-radius:999px;padding:7px 16px;
+    background:rgba(0,212,255,.07)
+  }
+  h1{
+    font-size:clamp(26px,7.4vw,34px);font-weight:800;line-height:1.18;
+    text-align:center;margin:14px 0 10px;letter-spacing:.01em;
+  }
+  h1 .hl{background:linear-gradient(90deg,var(--neon),var(--neon2));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{text-align:center;color:var(--muted);font-size:16px;max-width:420px;margin:0 auto}
+  /* Vídeo */
+  .video-shell{margin:22px auto 0;max-width:340px;position:relative}
+  .video-frame{
+    position:relative;border-radius:22px;overflow:hidden;aspect-ratio:9/16;
+    border:1px solid var(--line);
+    box-shadow:0 0 0 1px rgba(0,0,0,.4), 0 18px 60px rgba(0,212,255,.14), 0 8px 30px rgba(0,0,0,.5);
+    background:#000;cursor:pointer;
+  }
+  .video-frame video{width:100%;height:100%;object-fit:cover;display:block}
+  .sound-hint{
+    position:absolute;right:12px;bottom:12px;background:rgba(0,0,0,.62);color:#fff;
+    font-size:12px;border-radius:999px;padding:7px 12px;backdrop-filter:blur(4px);
+    border:1px solid rgba(255,255,255,.18);pointer-events:none;
+  }
+  /* CTA */
+  .cta-block{margin:26px 0 8px;text-align:center}
+  .btn-wa{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;min-height:64px;padding:16px 20px;border:none;cursor:pointer;
+    background:linear-gradient(180deg,#2fe07a,var(--wa) 45%,var(--wa-dark));
+    color:#04240f;font-weight:800;font-size:18px;letter-spacing:.02em;
+    border-radius:18px;text-decoration:none;
+    box-shadow:0 10px 30px rgba(37,211,102,.35), inset 0 1px 0 rgba(255,255,255,.35);
+    transition:transform .12s ease, box-shadow .2s ease;
+  }
+  .btn-wa:active{transform:scale(.985)}
+  .btn-wa svg{flex:0 0 auto}
+  .cta-note{margin-top:10px;font-size:14px;color:var(--muted)}
+  .pulse{animation:pulse 2.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 10px 30px rgba(37,211,102,.35),inset 0 1px 0 rgba(255,255,255,.35)}
+    50%{box-shadow:0 10px 42px rgba(37,211,102,.55),inset 0 1px 0 rgba(255,255,255,.35)}}
+  /* Benefícios */
+  .section{margin-top:44px}
+  .section h2{font-size:21px;font-weight:800;text-align:center;margin-bottom:6px}
+  .section .lead{text-align:center;color:var(--muted);font-size:15px;margin-bottom:18px}
+  .cards{display:grid;gap:12px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:16px;display:flex;gap:14px;align-items:flex-start;
+    opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;
+  }
+  .card.visible{opacity:1;transform:none}
+  .icon{
+    flex:0 0 46px;width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,rgba(0,212,255,.22),rgba(124,92,255,.22));
+    border:1px solid var(--line);font-size:22px;
+  }
+  .card h3{font-size:16px;font-weight:700;margin-bottom:4px}
+  .card p{font-size:14.5px;color:var(--muted)}
+  /* Convite final */
+  .final{
+    margin-top:44px;text-align:center;background:linear-gradient(180deg,rgba(0,212,255,.08),rgba(124,92,255,.06));
+    border:1px solid var(--line);border-radius:20px;padding:28px 20px;
+    opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;
+  }
+  .final.visible{opacity:1;transform:none}
+  .final h2{font-size:22px;font-weight:800;margin-bottom:10px}
+  .final p{color:var(--muted);font-size:15px;margin-bottom:20px}
+  .tiny{margin-top:12px;font-size:12.5px;color:var(--muted);opacity:.85}
+  footer{margin-top:40px;text-align:center;font-size:12px;color:var(--muted);opacity:.7}
+  @media (prefers-reduced-motion:reduce){.pulse{animation:none}.card,.final{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="badge"><span class="pill">Comunidade digital</span></header>
+
+  <!-- SEÇÃO 1: HEADLINE + VÍDEO -->
+  <h1>DESCUBRA UM NOVO UNIVERSO DE <span class="hl">FERRAMENTAS DIGITAIS</span></h1>
+  <p class="sub">Inteligência artificial, recursos digitais e novidades para quem quer aproveitar melhor a tecnologia.</p>
+
+  <div class="video-shell">
+    <div class="video-frame" id="videoFrame" role="button" aria-label="Ativar som do vídeo" tabindex="0">
+      <video id="heroVideo" muted loop playsinline preload="metadata" poster="assets/video-poster.jpg">
+        <source src="assets/video.mp4" type="video/mp4">
+      </video>
+      <span class="sound-hint" id="soundHint">🔊 toque para ativar o som</span>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2: CTA PRINCIPAL -->
+  <div class="cta-block">
+    <a class="btn-wa pulse" data-cta href="#" rel="noopener">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 2 6.5L4 29l7.7-2c1.8 1 3.9 1.6 6 1.6h.3c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.6 1.2 1.2-4.5-.3-.4c-1-1.6-1.6-3.5-1.6-5.4 0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10zm5.5-7.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.3-.7.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.9-1.7-2.2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.2-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg>
+      QUERO ENTRAR NO GRUPO GRÁTIS
+    </a>
+    <p class="cta-note">Toque no botão e acesse nosso grupo no WhatsApp.</p>
+  </div>
+
+  <!-- SEÇÃO 3: BENEFÍCIOS -->
+  <section class="section">
+    <h2>O que você vai encontrar</h2>
+    <p class="lead">Tudo pensado para quem vive conectado.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🤖</div>
+        <div><h3>Inteligência artificial</h3>
+        <p>Conheça ferramentas como ChatGPT, Gemini, Muse AI e outras soluções.</p></div>
+      </div>
+      <div class="card">
+        <div class="icon">🛠️</div>
+        <div><h3>Ferramentas digitais</h3>
+        <p>Descubra recursos para criação, produtividade, marketing e trabalho online.</p></div>
+      </div>
+      <div class="card">
+        <div class="icon">⚡</div>
+        <div><h3>Novidades e oportunidades</h3>
+        <p>Acompanhe novidades do mercado digital e recursos úteis para seus projetos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 4: CONVITE FINAL -->
+  <section class="final" id="convite-final">
+    <h2>VENHA FAZER PARTE DESSA NOVA COMUNIDADE DIGITAL</h2>
+    <p>Estamos começando e queremos reunir pessoas que gostam de tecnologia, inteligência artificial e ferramentas digitais. Entre no grupo e acompanhe as novidades.</p>
+    <a class="btn-wa" data-cta href="#" rel="noopener">
+      <svg width="24" height="24" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 2 6.5L4 29l7.7-2c1.8 1 3.9 1.6 6 1.6h.3c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.6 1.2 1.2-4.5-.3-.4c-1-1.6-1.6-3.5-1.6-5.4 0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10zm5.5-7.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.3-.7.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.9-1.7-2.2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.2-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg>
+      ENTRAR NO NETWORK DIGITAL EXCLUSIVO
+    </a>
+    <p class="tiny">Você será direcionado ao WhatsApp.</p>
+  </section>
+
+  <footer>© 2026 Network Digital Exclusivo</footer>
+</div>
+
+<script src="config.js"></script>
+<script>
+(function(){
+  var cfg = window.SITE_CONFIG || {};
+
+  /* ---------- Link do WhatsApp com preservação de UTM ---------- */
+  function buildInvite(){
+    var base = cfg.whatsappInvite || "#";
+    var q = window.location.search; // ?utm_source=...&utm_medium=...
+    if(!q) return base;
+    var sep = base.indexOf("?") === -1 ? "?" : "&";
+    return base + sep + q.substring(1);
+  }
+  function wireCtas(){
+    var links = document.querySelectorAll("[data-cta]");
+    links.forEach(function(a){
+      a.href = buildInvite();
+      a.target = "_blank";
+      a.addEventListener("click", function(){
+        // Evento de clique no CTA (NÃO conta como entrada confirmada no grupo)
+        if(window.fbq){ try{ window.fbq("trackCustom", "WhatsAppClick"); }catch(e){} }
+      });
+    });
+  }
+
+  /* ---------- Meta Pixel (opcional) ---------- */
+  function initPixel(){
+    var id = (cfg.metaPixelId || "").trim();
+    if(!id) return; // Pixel desativado
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,"script","https://connect.facebook.net/en_US/fbevents.js");
+    window.fbq("init", id);
+    window.fbq("track", "PageView");
+  }
+
+  /* ---------- Vídeo: autoplay mudo + som no toque ---------- */
+  function initVideo(){
+    var v = document.getElementById("heroVideo"),
+        frame = document.getElementById("videoFrame"),
+        hint = document.getElementById("soundHint");
+    if(cfg.videoUrl) v.querySelector("source").src = cfg.videoUrl;
+    if(cfg.videoPoster) v.poster = cfg.videoPoster;
+    v.load();
+    var tryPlay = function(){ var p = v.play(); if(p && p.catch){ p.catch(function(){}); } };
+    tryPlay();
+    document.addEventListener("visibilitychange", function(){ if(!document.hidden) tryPlay(); });
+    function toggleSound(){
+      v.muted = !v.muted;
+      if(hint) hint.style.display = v.muted ? "" : "none";
+      tryPlay();
+    }
+    frame.addEventListener("click", toggleSound);
+    frame.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggleSound(); } });
+  }
+
+  /* ---------- Animações discretas de entrada ---------- */
+  function initReveal(){
+    var els = document.querySelectorAll(".card, .final");
+    if(!("IntersectionObserver" in window)){ els.forEach(function(e){e.classList.add("visible")}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("visible"); io.unobserve(en.target); } });
+    }, {threshold:.15});
+    els.forEach(function(e){ io.observe(e); });
+  }
+
+  wireCtas(); initPixel(); initVideo(); initReveal();
+})();
+</script>
+</body>
+</html>
