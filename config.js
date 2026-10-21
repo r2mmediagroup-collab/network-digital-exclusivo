@@ -4,7 +4,7 @@
    ============================================================ */
 const SITE_CONFIG = {
   // Link oficial de convite do grupo no WhatsApp
-  whatsappInvite: "https://chat.whatsapp.com/BcbxwwSNQxR8yueThSsE4a",
+  whatsappInvite: "https://chat.whatsapp.com/H9r69QifxR78s7KSLeIyIu",
 
   // Vídeo principal (9:16). Troque pelo caminho/URL do vídeo final.
   videoUrl: "assets/video.mp4",
